@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Body, Sider, Main, Name, Endereco, Search} from './styles';
-import PrecoSocial from './PrecoSocial'
+import { Body, Sider, Main, Name, Endereco, Search } from './styles';
+import PrecoSocial from './PrecoSocial';
 import Galery from './Galery';
+import Informacoes from './Informacoes';
 import { Spin, Divider } from 'antd';
+import RedesSociais from './Social';
+import MediaQuery from 'react-responsive';
 import axios from 'axios';
 
 const API_URL = 'http://imovelsisapi.azurewebsites.net:80/api';
@@ -16,7 +19,7 @@ export default class Imoveis extends Component {
     };
   }
   componentDidMount = async () => {
-    const url = `${API_URL}/Imoveis/657?ImovelId=${this.props.match.params.id}`;
+    const url = `${API_URL}/Imoveis/123?ImovelId=${this.props.match.params.id}`;
     try {
       await axios
         .get(url)
@@ -43,22 +46,30 @@ export default class Imoveis extends Component {
             <Main>
               {this.state.imovel.map(item => (
                 <div key={1}>
-                  <Name>{`${item.Tipo.toLowerCase()}`}</Name>
+                  <MediaQuery maxDeviceWidth={700}>
+                    <div style={{ marginBottom: 10 }}>
+                      <RedesSociais />
+                    </div>
+                  </MediaQuery>
+                  <Name>
+                    {`${item.Tipo.toLowerCase()} - ${item.Bairro.toLowerCase()}`}
+                  </Name>
                   <Endereco>{`${item.Cidade.toLowerCase()} - ${item.Estado.toLowerCase()}`}</Endereco>
                   <Divider />
-                  <PrecoSocial itemVenda={item.ValorVenda} itemAluguel={item.Valor}/>
-                  <div style={{marginTop: '50px'}}>
-                    {"Imagens" in item  && <Galery imagens={item.Imagens}/>}
+                  <PrecoSocial
+                    itemVenda={item.ValorVenda}
+                    itemAluguel={item.Valor}
+                  />
+                  <div style={{ marginTop: '50px' }}>
+                    {'Imagens' in item && <Galery imagens={item.Imagens} />}
+                    {'Imagens' in item === false && <div> Imagens </div>}
                   </div>
-                  
+                  <Informacoes Id={item.ImovelId} Tipo={item.Tipo} />
                 </div>
               ))}
             </Main>
             <Sider>
-              <Search>
-                  PESQUISE
-              </Search>
-
+              <Search>PESQUISE</Search>
             </Sider>
           </Body>
         )}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
+import Menu from './Menu';
 import 'antd/dist/antd.css';
 
 const { Header, Footer, Content } = Layout;
@@ -16,7 +17,24 @@ export default class App extends Component {
     return (
       <div>
         <Layout style={{ background: '#fff' }}>
-          <Header breakpoint="lg" theme="light" style={{ zIndex: 1 }}></Header>
+          <Header
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div
+              style={{
+                background: 'rgb(255, 255, 255, 0.5',
+                height: 46,
+                width: 100
+              }}
+            >
+              a
+            </div>
+            <Menu />
+          </Header>
           <Content>
             <div style={{ background: '#fff' }}>{children}</div>
           </Content>

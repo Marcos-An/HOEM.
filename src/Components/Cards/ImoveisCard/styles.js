@@ -34,7 +34,7 @@ export const Body = styled.div`
   text-align: left;
 
   @media (max-width: 600px) {
-    grid-template-columns: 350px !important;
+    grid-template-columns: 330px !important;
     grid-gap: 10px;
   }
   @media (max-width: 1000px) {
@@ -42,27 +42,19 @@ export const Body = styled.div`
     grid-gap: 10px;
   }
 `;
-
-export const Cards = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  height: 350px;
-  font-size: 25px;
-`;
-
 export const Img = styled.div`
   height: 230px;
   background-image: url(${props => props.imagem});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; 
+  background-size: cover;
 `;
 
 export const Text = styled.div`
   background: #fff;
   height: 130px;
   color: #2c3e50;
+  margin-left: -10px;
   h3 {
     margin: 10px 0px 0px 10px;
     text-transform: capitalize;
@@ -71,11 +63,19 @@ export const Text = styled.div`
     font-family: 'Poppins', sans-serif;
   }
   h4 {
-    margin: 0px 0px 15px 10px;
+    margin: 0px 0px 10px 10px;
     text-transform: capitalize;
     color: #a6a6a6;
     font-weight: 400;
     font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+  }
+  h5 {
+    margin: 0px 0px 0px 10px;
+    text-transform: capitalize;
+    color: #383838;
+    font-weight: 450;
+    font-size: 14px;
     font-family: 'Poppins', sans-serif;
   }
   strong {
