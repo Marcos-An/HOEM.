@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PrimeiraFaixa = styled.div`
-  padding: 50px 0px 50px 0px;
+  padding: 80px 0px 80px 0px;
   background-image: url(./Assets/back.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -11,19 +11,19 @@ export const PrimeiraFaixa = styled.div`
 `;
 
 export const Content = styled.div`
-  display: flex;
-  flex-direction: row;
-  text-align: left;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
 
   @media (max-width: 600px) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 `;
 
 export const Text = styled.div`
-  width: 50%;
+  padding-left: 40px;
+  width: 80%;
   h1 {
-    padding-left: 10%;
     color: #fff;
     font-size: 64px;
     word-wrap: break-word;
@@ -31,7 +31,6 @@ export const Text = styled.div`
     font-family: 'Poppins', sans-serif;
   }
   h6 {
-    padding-left: 11%;
     color: #f9f9f9;
     font-size: 20px;
     word-wrap: break-word;
@@ -40,13 +39,12 @@ export const Text = styled.div`
   }
 
   @media (max-width: 700px) {
-    text-align: center;
-    width: 100vw;
+    text-align: left;
     h1 {
-      margin: 0px 3px 20px 3px;
+      display: none
+      padding-left: 0px !important;
       color: #fff;
-      padding-left: 0% !important;
-      font-size: 25px !important;
+      font-size: 20px !important;
       word-wrap: break-word;
       font-weight: 900;
       font-family: 'Poppins', sans-serif;
@@ -55,17 +53,39 @@ export const Text = styled.div`
       display: none;
     }
   }
-  @media (max-width: 1000px) {
+  @media (min-width: 1000px) {
     h1 {
+      padding-left: 40px;
       color: #fff;
-      font-size: 36px;
+      font-size: 60px;
       word-wrap: break-word;
       font-weight: 800;
       font-family: 'Poppins', sans-serif;
     }
     h6 {
+      padding-left: 40px !important;
       color: #f9f9f9;
-      font-size: 22px;
+      font-size: 22px !important;
+      word-wrap: break-word;
+      font-weight: 200;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+
+  @media (min-width: 1900px) {
+    margin-left: 150px !important;
+    width: 62%;
+    h1 {
+      color: #fff;
+      font-size: 70px !important;
+      word-wrap: break-word;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h6 {
+      color: #f9f9f9;
+      font-size: 22px !important;
       word-wrap: break-word;
       font-weight: 200;
       font-family: 'Poppins', sans-serif;
@@ -74,31 +94,16 @@ export const Text = styled.div`
 `;
 
 export const FormSpace = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 50%;
+  display: block;
+  align-items: left;
+  background: rgb(0, 0, 0, 0.4);
 
-  div {
-    height: 550px;
-    width: 60%;
-    background: rgb(255, 255, 255, 0.3);
+  @media (min-width: 1900px) {
+    margin-right: 200px;
   }
-
-  @media (max-width: 600px) {
-    width: 100%;
-
-    div {
-      padding-bottom: 20px !important;
-      height: 300px !important;
-      width: 100%;
-      background: rgb(255, 255, 255, 0.3);
-    }
+  
+  @media (min-width: 1000px) {
+    margin-right: 90px ;
   }
-  @media (max-width: 1000px) {
-    div {
-      height: 550px;
-      width: 80%;
-      background: rgb(255, 255, 255, 0.3);
-    }
-  }
+  
 `;

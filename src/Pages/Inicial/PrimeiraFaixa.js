@@ -1,4 +1,5 @@
 import React from 'react';
+import Form from '../../Components/Form/FormInicial'
 import { PrimeiraFaixa, Content, FormSpace, Text } from './stylesPrimeira';
 
 export default function Primeira() {
@@ -7,17 +8,15 @@ export default function Primeira() {
       <Content>
         <Text>
           <div>
-            <h1>A melhor maneira de encontrar a sua casa</h1>
+            <h1>A melhor maneira de encontrar a sua casa!</h1>
           </div>
           <div>
-            <h6>A melhor maneira de encontrar a sua casa</h6>
+            <h6>A melhor maneira de encontrar a sua casa.</h6>
           </div>
         </Text>
 
         <FormSpace>
-          <div>
-            <p>A </p>
-          </div>
+            <Form/>
         </FormSpace>
       </Content>
     </PrimeiraFaixa>

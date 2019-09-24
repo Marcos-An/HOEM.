@@ -4,6 +4,7 @@ import PrecoSocial from './PrecoSocial';
 import Galery from './Galery';
 import Informacoes from './Informacoes';
 import { Spin, Divider } from 'antd';
+import StreetView from './StreetView';
 import RedesSociais from './Social';
 import MediaQuery from 'react-responsive';
 import axios from 'axios';
@@ -65,6 +66,7 @@ export default class Imoveis extends Component {
                     {'Imagens' in item === false && <div> Imagens </div>}
                   </div>
                   <Informacoes Id={item.ImovelId} Tipo={item.Tipo} />
+                  <StreetView Lat={item.Latitude} Lon={item.Longitude}/>
                 </div>
               ))}
             </Main>

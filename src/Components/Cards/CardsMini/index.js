@@ -2,31 +2,42 @@ import React, { Component } from 'react';
 import { 
   Body, 
   Img, 
-  Text, 
-  Title, 
+  Text,
   Container, 
-  SubTitle, 
-  Faixa 
 } from './styles';
 
-import { Spin, Card } from 'antd';
+import { Spin, Card, Pagination } from 'antd';
 import axios from 'axios';
 
 const API_URL = 'http://imovelsisapi.azurewebsites.net:80/api';
+const numEachPage = 6;
 
 export default class Imoveis extends Component {
   constructor(props) {
     super(props);
     this.state = {
       imoveis: [],
-      loading: true
+      loading: true,
+      minValue: 0,
+      maxValue: 6
     };
+    this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount = async () => {
-    const url = `${API_URL}/Imoveis/123?`;
+   const {
+      finalidade,
+      tipoImovel,
+      faixaPrecoVenda,
+      qtdDormitorios,
+    } = this.props;
+    const url = new URL(`${API_URL}/Imoveis/123?`)
+    if (finalidade) url.searchParams.set("Finalidade", finalidade)
+    if (tipoImovel) url.searchParams.set("TipoImovel", tipoImovel)
+    if (faixaPrecoVenda) url.searchParams.set("FaixaPreco", faixaPrecoVenda)
+    if (qtdDormitorios) url.searchParams.set("QtdDormitorios", qtdDormitorios)
     try {
       await axios
-        .get(url)
+        .get(url.href)
         .then(response => response.data)
         .then(data => {
           this.setState({ loading: false, imoveis: data });
@@ -35,18 +46,19 @@ export default class Imoveis extends Component {
       console.log(erro);
     }
   };
+  handleChange = value => {
+    this.setState({
+      minValue: (value - 1) * numEachPage,
+      maxValue: value * numEachPage
+    });
+  };
   render() {
     return (
       <>
-      <Faixa>
-         <Title> IMÓVEIS </Title>
-         <SubTitle> Veja alguns de nossos imóveis, temos mais de 500 para a venda e aluguel!  </SubTitle>
-      </Faixa>
-        <Container>
-          {this.state.loading ? (
-            <div
-              style={{
-                textAlign: 'center',
+      {this.state.loading ? (
+        <div
+        style={{
+          textAlign: 'center',
                 marginTop: '5%',
                 marginBottom: '5%'
               }}
@@ -54,14 +66,15 @@ export default class Imoveis extends Component {
               <Spin tip="Carregando..." />
             </div>
           ) : (
+          <Container>
             <Body>
               {this.state.imoveis.length > 0 &&
-                this.state.imoveis.map((item, id) => (
+                this.state.imoveis.slice(this.state.minValue, this.state.maxValue).map((item, id) => (
                   <a href={`/imovel/${item.ImovelId}`}>
                     <Card
                       size="small"
                       hoverable
-                      key={id}
+                      key={item.ImovelId}
                       cover={
                         'Imagens' in item === false ? (
                           <Img
@@ -119,8 +132,15 @@ export default class Imoveis extends Component {
                   </a>
                 ))}
             </Body>
+              <Pagination
+                style={{marginTop: 30}}
+                defaultCurrent={1}
+                defaultPageSize={numEachPage}
+                onChange={this.handleChange}
+                total={this.state.imoveis.length}
+              />
+          </Container>
           )}
-        </Container>
       </>
     );
   }

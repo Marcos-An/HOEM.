@@ -1,30 +1,22 @@
 import React from 'react';
-import ReactStreetview from 'react-streetview';
+import { Tabs } from 'antd';
+import StreetView from '../../Components/Maps/StreetView'
+import Maps from '../../Components/Maps/Maps'
+const { TabPane } = Tabs;
  
-export default class App extends React.Component {
-
-    render() {
-        // see https://developers.google.com/maps/documentation/javascript
-        const googleMapsApiKey = 'YOUR_API_KEY';
- 
-        // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
-        const streetViewPanoramaOptions = {
-            position: {lat: 46.9171876, lng: 17.8951832},
-            pov: {heading: 100, pitch: 0},
-            zoom: 1
-        };
- 
-        return (
-            <div style={{
-                width: '800px',
-                height: '450px',
-                backgroundColor: '#eeeeee'
-            }}>
-                <ReactStreetview
-                    apiKey={googleMapsApiKey}
-                    streetViewPanoramaOptions={streetViewPanoramaOptions}
-                />
-            </div>
-        );
-    }
+export default function Mapas(props){
+    return (
+        <Tabs defaultActiveKey="1">
+            <TabPane tab="Street View" key="1">
+                <div style={{height: 430}}>
+                    <StreetView Lan={props.Lan} Lon={props.Lon}/>
+                </div>
+            </TabPane>
+            <TabPane tab="Mapa" key="2">
+                <div style={{height: 430}}>
+                    <Maps Lan={props.Lan} Lon={props.Lon}/>
+                </div>
+            </TabPane>
+        </Tabs>
+    );
 }

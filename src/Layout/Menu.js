@@ -34,7 +34,7 @@ class MenuPrincipal extends Component {
             style={{ color: '#fff', fontSize: 20 }}
           />
           <Drawer
-            title={<Button type="primary">Entrar </Button>}
+            title={<Button onClick={this.goTo('/Login')} type="primary">Entrar/Registro</Button>}
             width={200}
             placement="right"
             closable={true}
@@ -46,22 +46,35 @@ class MenuPrincipal extends Component {
               mode="inline"
               style={{ width: '150%', marginLeft: -15 }}
             >
-              <Menu.Item onClick={this.goTo('/')}>Inicio</Menu.Item>
-              <Menu.Item>Menu</Menu.Item>
-              <Menu.Item>Menu</Menu.Item>
-              <Menu.Item>Menu</Menu.Item>
+              <Menu.Item onClick={this.goTo('/')} key="1">
+                Inicio
+              </Menu.Item>
+              <Menu.Item key="2" onClick={this.goTo('/Imoveis')}>
+                Imóveis
+              </Menu.Item>
+              <Menu.Item  key="3">Menu</Menu.Item>
+              <Menu.Item  key="4">Menu</Menu.Item>
             </Menu>
           </Drawer>
         </MediaQuery>
 
         <MediaQuery minDeviceWidth={1024}>
-          <Menu theme="dark" mode="horizontal">
-            <Menu.Item onClick={this.goTo('/')}>Inicio</Menu.Item>
-            <Menu.Item>Menu</Menu.Item>
-            <Menu.Item>Menu</Menu.Item>
-            <Menu.Item>Menu</Menu.Item>
-            <Button type="primary" style={{ marginLeft: 30, marginRight: 50 }}>
-              Login
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1" onClick={this.goTo('/')}>
+              Inicio
+            </Menu.Item>
+            <Menu.Item key="2" onClick={this.goTo('/Imoveis')}>
+              Imóveis
+            </Menu.Item>
+            <Menu.Item key="3">Menu</Menu.Item>
+            <Menu.Item key="4">Menu</Menu.Item>
+            <Button
+              onClick={this.goTo('/Login')}
+              size="large"
+              type="primary"
+              style={{ marginLeft: 30, marginRight: 50 }}
+            >
+              Entrar/Registro
             </Button>
           </Menu>
         </MediaQuery>
