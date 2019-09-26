@@ -8,17 +8,21 @@ export const Container = styled.div`
   align-items: flex-end;
   text-align: center;
   background: #fff;
+
+  @media (max-width: 600px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Body = styled.div`
   display: grid;
   justify-content: center;
   flex-direction: column;
-  grid-template-columns: repeat(3, 280px);
+  grid-template-columns: repeat(3, 300px);
   grid-gap: 20px;
   text-align: left;
   @media (max-width: 600px) {
-    grid-template-columns: 300px !important;
+    grid-template-columns: 100% !important;
     grid-gap: 10px;
   }
   @media (max-width: 1000px) {
@@ -42,24 +46,24 @@ export const Text = styled.div`
   background: #fff;
   height: 130px;
   color: #2c3e50;
-  margin-left: -10px;
+  margin: 5px;
   h3 {
-    margin: 10px 0px 0px 10px;
+    margin: 10px 0px 0px 0px;
     text-transform: capitalize;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
   }
   h4 {
-    margin: 0px 0px 10px 10px;
+    margin: 0px 0px 10px 0px;
     text-transform: capitalize;
     color: #a6a6a6;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Poppins', sans-serif;
   }
   h5 {
-    margin: 0px 0px 0px 10px;
+    margin-top: -12px;
     text-transform: capitalize;
     color: #383838;
     font-weight: 450;
@@ -67,9 +71,9 @@ export const Text = styled.div`
     font-family: 'Poppins', sans-serif;
   }
   strong {
-    margin: 0px 10px;
+    margin-top: -12px;
     color: #ffdf29;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
   }

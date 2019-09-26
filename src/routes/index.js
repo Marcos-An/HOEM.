@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../Pages/Inicial";
 import Imovel from "../Pages/Imovel"
 import Imoveis from "../Pages/Imoveis"
+import Contato from "../Pages/Contato"
 import Login from "../Pages/Login"
 
 const Routes = () => (
@@ -15,6 +16,7 @@ const Routes = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/Imoveis" component={Imoveis} />
         <Route exact path="/imovel/:id" component={Imovel}/>
+        <Route exact path="/Contato" component={Contato}/>
       </Layout>
     </Switch>
   </BrowserRouter>

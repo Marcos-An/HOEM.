@@ -6,9 +6,8 @@ export const QuintaFaixa = styled.div`
   background-image: url(../../../Assets/bg-achievement.jpg);
   display: grid;
   grid-template-columns: repeat(4, 250px);
-  grid-gap: 60px;
-  justify-content: space-around;
-
+  grid-gap: 50px;
+  justify-content: center;
   text-align: center;
 
   @media (max-width: 600px) {

@@ -14,6 +14,7 @@ export default class FormLayoutDemo extends React.Component {
             style={{ width: "100%" }}
             onChange={handleChange}
           >
+             <Option value={undefined}>Todos</Option>
             <Option value="50000 - 100000">R$50.000,00 - R$100.000,00</Option>
             <Option value="100000 - 150000">R$100.000,00 - R$150.000,00</Option>
             <Option value="150000 - 200000">R$150.000,00 - R$200.000,00</Option>

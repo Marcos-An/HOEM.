@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Body, Sider, Main, Name, Endereco, Search } from './styles';
+import { Body, Sider, Main, Name, Endereco} from './styles';
+import {Search, Qtd } from '../Imoveis/styles';
 import PrecoSocial from './PrecoSocial';
 import Galery from './Galery';
 import Informacoes from './Informacoes';
-import { Spin, Divider } from 'antd';
+import { Spin, Divider, Card } from 'antd';
 import StreetView from './StreetView';
 import RedesSociais from './Social';
 import MediaQuery from 'react-responsive';
@@ -12,15 +13,16 @@ import axios from 'axios';
 const API_URL = 'http://imovelsisapi.azurewebsites.net:80/api';
 
 export default class Imoveis extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      imovel: [],
-      loading: true
-    };
+      loading: true,
+      imoveil: [],
+    }
   }
+
   componentDidMount = async () => {
-    const url = `${API_URL}/Imoveis/123?ImovelId=${this.props.match.params.id}`;
+    const url = `${API_URL}/Imoveis/657?ImovelId=${this.props.match.params.id}`;
     try {
       await axios
         .get(url)
@@ -71,8 +73,13 @@ export default class Imoveis extends Component {
               ))}
             </Main>
             <Sider>
-              <Search>PESQUISE</Search>
-            </Sider>
+              <Search>Relacionados</Search>
+              <Qtd>
+                Veja os relacionados a este imóvel
+              </Qtd>
+              <Divider />
+              <Card/>
+          </Sider>
           </Body>
         )}
       </>

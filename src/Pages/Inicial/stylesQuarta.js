@@ -18,9 +18,10 @@ export const QuartaFaixa = styled.div`
 
 export const Agentes = styled.div`
   display: Grid;
-  justify-content: space-around;
   grid-template-columns: repeat(4, 280px);
+  justify-content: center;
   text-align: center;
+  grid-gap: 50px;
 
   @media (max-width: 600px) {
     grid-template-columns: 300px !important;

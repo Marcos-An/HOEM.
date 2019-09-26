@@ -27,7 +27,7 @@ export const Info = styled.h4`
   font-size: 1.2em;
   margin-left: 10px;
   font-weight: 600;
-  color: #0ba;
+  color: #fdd001;
   font-family: 'Montserrat', sans-serif;
 
   @media (max-width: 600px) {

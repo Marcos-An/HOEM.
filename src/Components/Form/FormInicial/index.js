@@ -7,74 +7,53 @@ import Aluguel from './Aluguel'
 import Venda from './Venda'
 import Dormitorios from './Dormitorios'
 
-export default class FormLayoutDemo extends React.Component {
-  constructor(props){
-    super(props);
-    this.state ={
-      Finalidade: undefined,
-      TipoImovel : undefined,
-      Bairro : undefined,
-      FaixaPrecoAluguel : undefined,
-      FaixaPrecoVenda : undefined,
-      QtdDormitorios : undefined
-    }
-    this.handleFinalidade = this.handleFinalidade.bind(this)
-    this.handleTipoImovel = this.handleTipoImovel.bind(this)
-    this.handleFaixaPrecoAluguel = this.handleFaixaPrecoAluguel.bind(this)
-    this.handleFaixaPrecoVenda = this.handleFaixaPrecoVenda.bind(this)
-    this.handleQtdDormitorios = this.handleQtdDormitorios.bind(this)
-  }
-  handleFinalidade(value){
-    this.setState({ Finalidade : value});
-  }
-  handleTipoImovel(value){
-    this.setState({ TipoImovel : value });
-  }
-  handleFaixaPrecoAluguel(value){
-    this.setState({ FaixaPrecoAluguel : value });
-  }
-  handleFaixaPrecoVenda(value){
-    this.setState({ FaixaPrecoVenda : value });
-  }
-  handleQtdDormitorios(value){
-    this.setState({ QtdDormitorios : value });
-  }
+export default function FormLayout(props) {
+    const {
+      handleFinalidade,
+      handleFaixaPrecoAluguel,
+      handleFaixaPrecoVenda,
+      handleTipoImovel,
+      handleQtdDormitorios,
+      handleSearch,
+      finalidade
+    } = props;
 
-  render() {
     return (
       <div style={{padding: 40}}>
         <Search>Pesquise seu imóvel</Search>
         <Form layout="vertical" >
           <Form.Item>
-            <Finalidade handleChange={this.handleFinalidade} />
+            <Finalidade handleChange={ handleFinalidade } />
           </Form.Item>
           <Form.Item>
-            <TipoImovel handleChange={this.handleTipoImovel }/>
+            <TipoImovel handleChange={ handleTipoImovel }/>
           </Form.Item>
           <Form.Item>
-            <Dormitorios handleChange={this.handleQtdDormitorios }/>
+            <Dormitorios handleChange={ handleQtdDormitorios }/>
           </Form.Item>
-          {this.state.Finalidade === 'Aluguel' ? (
+          {finalidade === 'Aluguel' ? (
             <Form.Item>
-              {console.log(this.state.FaixaPrecoAluguel)}
-              <Aluguel handleChange={ this.handleFaixaPrecoAluguel }/>
+              <Aluguel handleChange={ handleFaixaPrecoAluguel }/>
             </Form.Item>
-          ): this.state.Finalidade === 'Venda' ? (
+          ): finalidade === 'Venda' ? (
             <Form.Item>
-              {console.log(this.state.FaixaPrecoVenda)}
-              <Venda handleChange={ this.handleFaixaPrecoVenda }/>
+              <Venda handleChange={ handleFaixaPrecoVenda }/>
             </Form.Item>
           ) : (  
           <Form.Item>
-            {console.log(this.state.FaixaPrecoAluguel)}
-            <Aluguel handleChange={ this.handleFaixaPrecoAluguel } />
+            <Aluguel handleChange={ handleFaixaPrecoAluguel } />
           </Form.Item>
           ) }
-          <Button size="large" type="primary" block>
-             Pesquisar 
-          </Button>
+          <a href="#Imoveis" onClick={handleSearch} >
+            <Button 
+              size="large"
+              type="primary" 
+              block
+            >
+              Pesquisar 
+            </Button> 
+          </a>
         </Form>
       </div>
     );
   }
-}

@@ -67,7 +67,9 @@ class MenuPrincipal extends Component {
               Imóveis
             </Menu.Item>
             <Menu.Item key="3">Menu</Menu.Item>
-            <Menu.Item key="4">Menu</Menu.Item>
+            <Menu.Item key="4" onClick={this.goTo('/Contato')}>
+              Contato
+            </Menu.Item>
             <Button
               onClick={this.goTo('/Login')}
               size="large"

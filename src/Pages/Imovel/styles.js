@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Body = styled.div`
+  padding: 70px 40px;  
   display: grid;
   justify-content: center;
-  grid-template-columns: 3fr 1.5fr;
+  grid-template-columns: 2fr 1.5fr;
   grid-gap: 10px;
 
   @media (max-width: 600px) {
@@ -16,7 +17,7 @@ export const Name = styled.h1`
   text-transform: capitalize;
   color: #2c3e50;
   font-weight: 600;
-  font-size: 3em;
+  font-size: 2.6em;
   font-family: 'Poppins', sans-serif;
 
   @media (max-width: 600px) {
@@ -27,9 +28,9 @@ export const Name = styled.h1`
 export const Endereco = styled.h3`
   text-transform: capitalize;
   color: #2c3e50;
-  font-weight: 300;
-  font-size: 2em;
+  font-size: 1.3em;
   margin-top: -15px;
+  font-weight: 400; 
   font-family: 'Poppins', sans-serif;
 
   @media (max-width: 600px) {
@@ -40,7 +41,7 @@ export const Endereco = styled.h3`
 export const Preco = styled.h1`
   font-size: 35px;
   font-weight: 500;
-  color: #0ba;
+  color: #fdd001;
   font-family: 'Montserrat', sans-serif;
 
   @media (max-width: 600px) {
@@ -59,8 +60,8 @@ export const PrecosAlign = styled.div`
 
 export const VendaAluguel = styled.h3`
   color: #2c3e50;
-  font-weight: 300;
   font-size: 1.4em;
+  font-weight: 400; 
   font-family: 'Poppins', sans-serif;
   margin: 0px 20px 0px 0px;
 
@@ -81,7 +82,7 @@ export const Social = styled.div`
 `;
 
 export const Main = styled.div`
-  padding: 70px 30px 100px 100px;
+  padding: 0px 40px 0px 0px;
 
   @media (max-width: 600px) {
     padding: 50px 30px 100px 20px !important;
@@ -92,23 +93,12 @@ export const Main = styled.div`
 `;
 
 export const Sider = styled.div`
-  padding: 70px 0px 100px 0px;
+  padding: 0px 0px 100px 0px;
 
   @media (max-width: 600px) {
     padding: 50px 0px 100px 20px !important;
   }
   @media (max-width: 1000px) {
     padding: 70px 0px 100px 20px;
-  }
-`;
-
-export const Search = styled.h3`
-  color: #2c3e50;
-  font-weight: 600;
-  font-size: 2.3em;
-  font-family: 'Poppins', sans-serif;
-
-  @media (max-width: 600px) {
-    font-size: 1.5em;
   }
 `;

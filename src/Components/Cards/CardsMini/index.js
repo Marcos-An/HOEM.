@@ -5,47 +5,22 @@ import {
   Text,
   Container, 
 } from './styles';
-
-import { Spin, Card, Pagination } from 'antd';
-import axios from 'axios';
-
-const API_URL = 'http://imovelsisapi.azurewebsites.net:80/api';
+import { Spin, Card, Pagination, Divider } from 'antd';
 const numEachPage = 6;
 
 export default class Imoveis extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imoveis: [],
-      loading: true,
       minValue: 0,
-      maxValue: 6
+      maxValue: 6,
     };
     this.handleChange = this.handleChange.bind(this)
   }
-  componentDidMount = async () => {
-   const {
-      finalidade,
-      tipoImovel,
-      faixaPrecoVenda,
-      qtdDormitorios,
-    } = this.props;
-    const url = new URL(`${API_URL}/Imoveis/123?`)
-    if (finalidade) url.searchParams.set("Finalidade", finalidade)
-    if (tipoImovel) url.searchParams.set("TipoImovel", tipoImovel)
-    if (faixaPrecoVenda) url.searchParams.set("FaixaPreco", faixaPrecoVenda)
-    if (qtdDormitorios) url.searchParams.set("QtdDormitorios", qtdDormitorios)
-    try {
-      await axios
-        .get(url.href)
-        .then(response => response.data)
-        .then(data => {
-          this.setState({ loading: false, imoveis: data });
-        });
-    } catch (erro) {
-      console.log(erro);
-    }
+  componentDidMount = async() => {
+   this.props.handleSearch();
   };
+
   handleChange = value => {
     this.setState({
       minValue: (value - 1) * numEachPage,
@@ -55,21 +30,21 @@ export default class Imoveis extends Component {
   render() {
     return (
       <>
-      {this.state.loading ? (
+      {this.props.loading ? (
         <div
         style={{
-          textAlign: 'center',
-                marginTop: '5%',
-                marginBottom: '5%'
-              }}
-            >
+              textAlign: 'center',
+              marginTop: '5%',
+              marginBottom: '5%'
+            }}
+          >
               <Spin tip="Carregando..." />
             </div>
           ) : (
           <Container>
             <Body>
-              {this.state.imoveis.length > 0 &&
-                this.state.imoveis.slice(this.state.minValue, this.state.maxValue).map((item, id) => (
+              {this.props.imoveis.length > 0 &&
+                this.props.imoveis.slice(this.state.minValue, this.state.maxValue).map((item, id) => (
                   <a href={`/imovel/${item.ImovelId}`}>
                     <Card
                       size="small"
@@ -88,8 +63,12 @@ export default class Imoveis extends Component {
                       <Text>
                         <h3>{`${item.Tipo.toLowerCase()} - ${item.Bairro.toLowerCase()}`}</h3>
                         <h4>{`${item.Cidade.toLowerCase()}`}</h4>
+                        <Divider
+                          style={{marginTop: -1}}
+                          dashed={true}  
+                        />
                         {item.Valor > 0 && item.ValorVenda > 0 ? (
-                          <div style={{ display: 'flex' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <div>
                               <h5>Venda</h5>
                               <strong>{`${item.ValorVenda.toLocaleString(
@@ -117,10 +96,13 @@ export default class Imoveis extends Component {
                             })}`}</strong>
                           </div>
                         ) : item.Valor === 0 && item.ValorVenda > 0 ? (
-                          <strong>{`${item.ValorVenda.toLocaleString('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL'
-                          })}`}</strong>
+                            <>
+                              <h5>Venda</h5>
+                              <strong>{`${item.ValorVenda.toLocaleString('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL'
+                              })}`}</strong>
+                            </>
                         ) : item.Valor === 0 && item.ValorVenda === 0 ? (
                           <div>
                             <h5>Valor não definido</h5>
@@ -133,11 +115,11 @@ export default class Imoveis extends Component {
                 ))}
             </Body>
               <Pagination
-                style={{marginTop: 30}}
+                style={{marginTop: 30, marginLeft: -10}}
                 defaultCurrent={1}
                 defaultPageSize={numEachPage}
                 onChange={this.handleChange}
-                total={this.state.imoveis.length}
+                total={this.props.imoveis.length}
               />
           </Container>
           )}

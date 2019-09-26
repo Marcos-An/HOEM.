@@ -11,6 +11,7 @@ export default class Finalidade extends React.Component {
       <>
         <h4 style={{color: '#2c3e50', fontSize: 15}}>Finalidade</h4>
         <Select size="large"  placeholder="Ex: Venda" style={{ width: "100%" }} onChange={handleChange}>
+          <Option value={undefined}>Todos</Option>
           <Option value="Aluguel">Aluguel</Option>
           <Option value="Venda">Venda</Option>
         </Select>

@@ -6,34 +6,29 @@ import {
   Title, 
   Container, 
   SubTitle, 
-  Faixa 
+  Faixa,
 } from './styles';
 
-import { Spin, Card } from 'antd';
-import axios from 'axios';
+import { Spin, Card, Divider, Pagination } from 'antd';
 
-const API_URL = 'http://imovelsisapi.azurewebsites.net:80/api';
-
+const numEachPage = 6;
 export default class Imoveis extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imoveis: [],
-      loading: true
+      minValue: 0,
+      maxValue: 6,
     };
+    this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount = async () => {
-    const url = `${API_URL}/Imoveis/123?`;
-    try {
-      await axios
-        .get(url)
-        .then(response => response.data)
-        .then(data => {
-          this.setState({ loading: false, imoveis: data });
-        });
-    } catch (erro) {
-      console.log(erro);
-    }
+    this.props.handleSearch();
+  };
+  handleChange = value => {
+    this.setState({
+      minValue: (value - 1) * numEachPage,
+      maxValue: value * numEachPage
+    });
   };
   render() {
     return (
@@ -43,20 +38,20 @@ export default class Imoveis extends Component {
          <SubTitle> Veja alguns de nossos imóveis, temos mais de 500 para a venda e aluguel!  </SubTitle>
       </Faixa>
         <Container>
-          {this.state.loading ? (
+          {this.props.loading ? (
             <div
               style={{
                 textAlign: 'center',
-                marginTop: '5%',
-                marginBottom: '5%'
+                alignSelf: 'center',
+                marginBottom: '10%'
               }}
             >
               <Spin tip="Carregando..." />
             </div>
           ) : (
             <Body>
-              {this.state.imoveis.length > 0 &&
-                this.state.imoveis.map((item, id) => (
+              {this.props.imoveis.length > 0 &&
+                this.props.imoveis.slice(this.state.minValue, this.state.maxValue).map((item, id) => (
                   <a href={`/imovel/${item.ImovelId}`}>
                     <Card
                       size="small"
@@ -75,6 +70,10 @@ export default class Imoveis extends Component {
                       <Text>
                         <h3>{`${item.Tipo.toLowerCase()} - ${item.Bairro.toLowerCase()}`}</h3>
                         <h4>{`${item.Cidade.toLowerCase()}`}</h4>
+                        <Divider
+                          style={{marginTop: -1}}
+                          dashed={true}  
+                        />
                         {item.Valor > 0 && item.ValorVenda > 0 ? (
                           <div style={{ display: 'flex' }}>
                             <div>
@@ -104,10 +103,13 @@ export default class Imoveis extends Component {
                             })}`}</strong>
                           </div>
                         ) : item.Valor === 0 && item.ValorVenda > 0 ? (
-                          <strong>{`${item.ValorVenda.toLocaleString('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL'
-                          })}`}</strong>
+                          <>
+                            <h5>Venda</h5>
+                            <strong>{`${item.ValorVenda.toLocaleString('pt-BR', {
+                              style: 'currency',
+                              currency: 'BRL'
+                            })}`}</strong>
+                          </>
                         ) : item.Valor === 0 && item.ValorVenda === 0 ? (
                           <div>
                             <h5>Valor não definido</h5>
@@ -120,6 +122,16 @@ export default class Imoveis extends Component {
                 ))}
             </Body>
           )}
+          { !this.props.loading ? (
+            <Pagination
+              style={{margin: '20px 0px 80px 8.7%' }}
+              defaultCurrent={1}
+              defaultPageSize={numEachPage}
+              onChange={this.handleChange}
+              total={this.props.imoveis.length}
+            />
+          ) : null
+        }
         </Container>
       </>
     );

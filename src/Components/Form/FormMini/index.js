@@ -6,8 +6,7 @@ import Aluguel from './Aluguel'
 import Venda from './Venda'
 import Dormitorios from './Dormitorios'
 
-export default class FormLayoutDemo extends React.Component {
-  render() {
+export default function FormLayout(props) {
     const { 
       funcFinalidade, 
       funcTipoImovel, 
@@ -15,8 +14,9 @@ export default class FormLayoutDemo extends React.Component {
       funcFaixaPrecoAluguel, 
       funcFaixaPrecoVenda,
       finalidade,
-      reload
-    } = this.props
+      handleSearch
+    } = props
+    
     return (
         <Form layout="vertical" >
           <Form.Item>
@@ -46,11 +46,10 @@ export default class FormLayoutDemo extends React.Component {
             type="primary" 
             block 
             style={{background : '#2c3e50', border: 'none',}}
-            
+            onClick={handleSearch}
           >
              Pesquisar 
           </Button>
         </Form>
     );
-  }
 }

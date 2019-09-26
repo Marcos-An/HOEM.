@@ -15,6 +15,7 @@ export default class TipoImovel extends React.Component {
           style={{ width: "100%"}} 
           onChange={handleChange}
         >
+          <Option value={undefined}>Todos</Option>
           <Option value="Apartamento">Apartamento</Option>
           <Option value="Barracao">Barracao</Option>
           <Option value="Casa">Casa</Option>
