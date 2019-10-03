@@ -1,48 +1,69 @@
 import styled from 'styled-components';
 
+export const Title = styled.h1`
+  color: #2c3e50;
+  margin-bottom: 50px;
+  font-size: 35px;
+  font-weight: 550;
+  font-family: 'Poppins', sans-serif;
+`;
+
 export const QuintaFaixa = styled.div`
-  padding: 50px 0px 50px 0px;
-  display: grid;
-  background-image: url(../../../Assets/bg-achievement.jpg);
-  display: grid;
-  grid-template-columns: repeat(4, 250px);
-  grid-gap: 50px;
+  padding: 100px 0px 100px 0px;
+  background: #f0f2f5;
+  display: block;
   justify-content: center;
   text-align: center;
+`;
+
+export const Agentes = styled.div`
+  display: Grid;
+  grid-template-columns: repeat(4, 280px);
+  justify-content: center;
+  text-align: center;
+  grid-gap: 50px;
 
   @media (max-width: 600px) {
     grid-template-columns: 300px !important;
-    grid-column-gap: 20px;
+    grid-gap: 30px;
   }
   @media (max-width: 1000px) {
     grid-template-columns: 300px 300px;
-    grid-column-gap: 20px;
+    grid-gap: 30px;
   }
 `;
 
-export const Infos = styled.div`
-  height: 230px;
-  color: #fff;
-  justify-content: center;
-  text-align: center;
+export const Agente = styled.div`
+  display: flex;
+  flex-direction: column;
 
-  img {
-    height: 50px;
+  div {
+    background-color: #fff;
   }
 `;
-
-export const Value = styled.h2`
-  color: #f3bc65;
-  margin: 60px 0px 10px 0px;
-  font-size: 3em;
-  letter-spacing: 5px;
-  font-weight: 400;
+export const Name = styled.h2`
+  margin: 20px 20px 13px 20px;
+  color: #2c3e50;
+  font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 `;
-
-export const Text = styled.h5`
-  color: #f3bc65;
-  font-size: 0.9em;
-  font-weight: 300;
+export const Telefone = styled.h2`
+  color: #0ba;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
   font-family: 'Montserrat', sans-serif;
+`;
+export const Mais = styled.h4`
+  color: #a6a6a6;
+  margin-bottom: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+`;
+export const Img = styled.div`
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;

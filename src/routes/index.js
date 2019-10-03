@@ -11,12 +11,12 @@ import Login from "../Pages/Login"
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-        <Route exact path="/Login" comonent={Login}/>
       <Layout>
         <Route exact path="/" component={Home} />
         <Route exact path="/Imoveis" component={Imoveis} />
         <Route exact path="/imovel/:id" component={Imovel}/>
         <Route exact path="/Contato" component={Contato}/>
+        <Route exact path="/Login" comonent={Login}/>
       </Layout>
     </Switch>
   </BrowserRouter>

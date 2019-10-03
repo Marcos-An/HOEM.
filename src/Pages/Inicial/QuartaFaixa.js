@@ -1,69 +1,53 @@
 import React from 'react';
-import {
-  QuartaFaixa,
-  Title,
-  Agentes,
-  Agente,
-  Img,
-  Name,
-  Telefone,
-  Mais
-} from './stylesQuarta';
+import { QuartaFaixa, Imagem, Info, InfoIcon } from './stylesQuarta'
 
-export default function Quarta() {
+export default function Terceira() {
   return (
     <QuartaFaixa>
-      <Title>NOSSOS AGENTES</Title>
-      <Agentes>
-        <Agente>
-          <Img
-            style={{
-              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-2-500x480-c-center.jpg')`
-            }}
-          />
+      <Imagem />
+      <Info>
+        <h1>NOSSA MISSÃO</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula
+          elit justo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Sed vehicula elit justo.
+        </p>
+        <InfoIcon>
           <div>
-            <Name>Helena Silva</Name>
-            <Telefone>067 9935-6948</Telefone>
-            <Mais> LEIA MAIS </Mais>
+            <img src="./Assets/rich.svg" alt="" />
+            <h2>Salve seu dinheiro</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              vehicula elit justo.
+            </p>
           </div>
-        </Agente>
-        <Agente>
-          <Img
-            style={{
-              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-4-500x480-c-center.jpg')`
-            }}
-          />
           <div>
-            <Name>Valdemir Santos</Name>
-            <Telefone>067 9935-6948</Telefone>
-            <Mais> LEIA MAIS </Mais>
+            <img src="./Assets/bars.svg" alt="" />
+            <h2>Salve seu dinheiro</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              vehicula elit justo.
+            </p>
           </div>
-        </Agente>
-        <Agente>
-          <Img
-            style={{
-              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-3-500x480-c-center.jpg')`
-            }}
-          />
           <div>
-            <Name>Thiago Tetila</Name>
-            <Telefone>067 9935-6948</Telefone>
-            <Mais> LEIA MAIS </Mais>
+            <img src="./Assets/sun.svg" alt="" />
+
+            <h2>Salve seu dinheiro</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              vehicula elit justo.
+            </p>
           </div>
-        </Agente>
-        <Agente>
-          <Img
-            style={{
-              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-2-500x480-c-center.jpg')`
-            }}
-          />
           <div>
-            <Name>Marisa Monte</Name>
-            <Telefone>067 9935-6948</Telefone>
-            <Mais> LEIA MAIS </Mais>
+            <img src="./Assets/search.svg" alt="" />
+            <h2>Salve seu dinheiro</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              vehicula elit justo.
+            </p>
           </div>
-        </Agente>
-      </Agentes>
+        </InfoIcon>
+      </Info>
     </QuartaFaixa>
   );
 }

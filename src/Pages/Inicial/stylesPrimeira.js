@@ -1,74 +1,60 @@
 import styled from 'styled-components';
 
 export const PrimeiraFaixa = styled.div`
-  padding: 80px 0px 80px 0px;
+  height: 400px;
   background-image: url(./Assets/back.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
   justify-content: center;
+  background-attachment: fixed;
+
 `;
 
-export const Content = styled.div`
+export const SegundaFaixa = styled.div`
+  height: 250px;
+  background: #130f40;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  align-items: center;
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
+    text-align: left;
+    height: 100%;
     grid-template-columns: 1fr;
   }
 `;
 
 export const Text = styled.div`
-  padding-left: 40px;
-  width: 80%;
+  padding: 60px 0px 0px 40px;
+  width: 70%;
+  display: flex;
   h1 {
     color: #fff;
-    font-size: 64px;
+    font-size: 40px;
     word-wrap: break-word;
-    font-weight: 900;
-    font-family: 'Poppins', sans-serif;
-  }
-  h6 {
-    color: #f9f9f9;
-    font-size: 20px;
-    word-wrap: break-word;
-    font-weight: 200;
-    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
   }
 
   @media (max-width: 700px) {
-    text-align: left;
+    width: 76%;
+    text-align:left;
+    justify-content: center;
+    padding: 50px 0px 50px 40px;
     h1 {
-      display: none
       padding-left: 0px !important;
-      color: #fff;
-      font-size: 20px !important;
-      word-wrap: break-word;
-      font-weight: 900;
-      font-family: 'Poppins', sans-serif;
+      font-size: 25px !important;
     }
-    h6 {
+    button{
       display: none;
     }
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 800px) and (max-width: 900px) {
     h1 {
       padding-left: 40px;
-      color: #fff;
-      font-size: 60px;
+      font-size: 30px;
       word-wrap: break-word;
-      font-weight: 800;
-      font-family: 'Poppins', sans-serif;
-    }
-    h6 {
-      padding-left: 40px !important;
-      color: #f9f9f9;
-      font-size: 22px !important;
-      word-wrap: break-word;
-      font-weight: 200;
-      font-family: 'Poppins', sans-serif;
     }
   }
 
@@ -77,33 +63,10 @@ export const Text = styled.div`
     width: 62%;
     h1 {
       color: #fff;
-      font-size: 70px !important;
+      font-size: 50px !important;
       word-wrap: break-word;
       font-weight: 800;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    h6 {
-      color: #f9f9f9;
-      font-size: 22px !important;
-      word-wrap: break-word;
-      font-weight: 200;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Nunito', sans-serif;;
     }
   }
-`;
-
-export const FormSpace = styled.div`
-  display: block;
-  align-items: left;
-  background: rgb(0, 0, 0, 0.4);
-
-  @media (min-width: 1900px) {
-    margin-right: 200px;
-  }
-  
-  @media (min-width: 1000px) {
-    margin-right: 90px ;
-  }
-  
 `;

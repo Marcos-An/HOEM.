@@ -1,41 +1,30 @@
-import React from 'react';
-import SlideShow from 'react-image-show';
-import MediaQuery from 'react-responsive';
+import React, { Component } from 'react';
+import ImageGallery from 'react-image-gallery';
 
-export default function Galery(props) {
-  const { imagens } = props;
-
-  return (
-    <>
-      <MediaQuery maxDeviceWidth={700}>
-        <SlideShow
-          images={imagens.map(item => item.Link)}
-          width="920px"
-          imagesWidth="100%"
-          imagesHeight="600px"
-          imagesHeightMobile="450px"
-          thumbnailsWidth="400px"
-          thumbnailsHeight="1vw"
-          arrows={true}
-          indicators
-          thumbnails
+export default class Galery extends Component{
+    constructor(props){
+      super(props);
+      this.state = {
+        images : []
+      }
+    }
+    componentDidMount(){
+      const { imagens } = this.props;
+      imagens.map( item => (
+          this.setState({ 
+            images : [...this.state.images, ({ original: item.Link, thumbnail: item.Link })]
+          }) 
+        )
+      )
+    }
+    render(){
+    return (
+      <>
+      {console.log(this.state.images)}
+        <ImageGallery 
+          items={this.state.images}
         />
-      </MediaQuery>
-      <MediaQuery minDeviceWidth={1200}>
-        <SlideShow
-          images={imagens.map(item => item.Link)}
-          width="920px"
-          imagesWidth="100%"
-          imagesHeight="600px"
-          imagesHeightMobile="450px"
-          thumbnailsWidth="400px"
-          thumbnailsHeight="1vw"
-          arrows={true}
-          fixedImagesHeight={true}
-          indicators
-          thumbnails
-        />
-      </MediaQuery>
-    </>
-  );
+      </>
+    );
+  }
 }

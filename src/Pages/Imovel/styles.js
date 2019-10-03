@@ -4,11 +4,12 @@ export const Body = styled.div`
   padding: 70px 40px;  
   display: grid;
   justify-content: center;
-  grid-template-columns: 2fr 1.5fr;
+  grid-template-columns: 3fr 1fr;
   grid-gap: 10px;
 
   @media (max-width: 600px) {
     grid-template-columns: none !important;
+    padding: 20px 20px;  
     grid-gap: 10px;
   }
 `;

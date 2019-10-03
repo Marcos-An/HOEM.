@@ -1,29 +1,69 @@
 import React from 'react';
-import { QuintaFaixa, Infos, Value, Text } from './stylesQuinta';
+import {
+  QuintaFaixa,
+  Title,
+  Agentes,
+  Agente,
+  Img,
+  Name,
+  Telefone,
+  Mais
+} from './stylesQuinta';
 
-export default function Inicial() {
+export default function Quarta() {
   return (
     <QuintaFaixa>
-      <Infos>
-        <img src="./Assets/group.svg" alt="" />
-        <Value> 1.312 </Value>
-        <Text>CLIENTES SATISFEITOS</Text>
-      </Infos>
-      <Infos>
-        <img src="./Assets/history.svg" alt="" />
-        <Value> 50 </Value>
-        <Text>ANOS DE HISTÓRIA</Text>
-      </Infos>
-      <Infos>
-        <img src="./Assets/seller.svg" alt="" />
-        <Value> +10 </Value>
-        <Text>CORRTORES</Text>
-      </Infos>
-      <Infos>
-        <img src="./Assets/hotel.svg" alt="" />
-        <Value> 11.234 </Value>
-        <Text>VENDAS E ALUGUEIS</Text>
-      </Infos>
+      <Title>NOSSOS AGENTES</Title>
+      <Agentes>
+        <Agente>
+          <Img
+            style={{
+              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-2-500x480-c-center.jpg')`
+            }}
+          />
+          <div>
+            <Name>Helena Silva</Name>
+            <Telefone>067 9935-6948</Telefone>
+            <Mais> LEIA MAIS </Mais>
+          </div>
+        </Agente>
+        <Agente>
+          <Img
+            style={{
+              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-4-500x480-c-center.jpg')`
+            }}
+          />
+          <div>
+            <Name>Valdemir Santos</Name>
+            <Telefone>067 9935-6948</Telefone>
+            <Mais> LEIA MAIS </Mais>
+          </div>
+        </Agente>
+        <Agente>
+          <Img
+            style={{
+              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-3-500x480-c-center.jpg')`
+            }}
+          />
+          <div>
+            <Name>Thiago Tetila</Name>
+            <Telefone>067 9935-6948</Telefone>
+            <Mais> LEIA MAIS </Mais>
+          </div>
+        </Agente>
+        <Agente>
+          <Img
+            style={{
+              backgroundImage: `url('http://realtyspace.codefactory47.com/app/uploads/2016/04/worker-2-500x480-c-center.jpg')`
+            }}
+          />
+          <div>
+            <Name>Marisa Monte</Name>
+            <Telefone>067 9935-6948</Telefone>
+            <Mais> LEIA MAIS </Mais>
+          </div>
+        </Agente>
+      </Agentes>
     </QuintaFaixa>
   );
 }

@@ -7,9 +7,11 @@ import {
   Container, 
   SubTitle, 
   Faixa,
+  Info,
+  Tags
 } from './styles';
 
-import { Spin, Card, Divider, Pagination } from 'antd';
+import { Spin,Card, Pagination, Tag, Icon } from 'antd';
 
 const numEachPage = 6;
 export default class Imoveis extends Component {
@@ -34,8 +36,8 @@ export default class Imoveis extends Component {
     return (
       <>
       <Faixa>
-         <Title> IMÓVEIS </Title>
-         <SubTitle> Veja alguns de nossos imóveis, temos mais de 500 para a venda e aluguel!  </SubTitle>
+         <SubTitle> NOSSOS IMÓVEIS </SubTitle>
+         <Title> Imóveis em Destaque  </Title>
       </Faixa>
         <Container>
           {this.props.loading ? (
@@ -54,68 +56,104 @@ export default class Imoveis extends Component {
                 this.props.imoveis.slice(this.state.minValue, this.state.maxValue).map((item, id) => (
                   <a href={`/imovel/${item.ImovelId}`}>
                     <Card
-                      size="small"
+                      style={{
+                        border: 'none',
+                        boxShadow: '0px 5px 18px -7px rgba(0,0,0,0.22)'
+                      }}
                       hoverable
                       key={id}
+                      className="card"
                       cover={
                         'Imagens' in item === false ? (
                           <Img
                             imagem={`https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80`}
                           />
                         ) : (
-                          <Img imagem={`${item.Imagens[0].Link}`} />
+                          <div style={{height: 200}} className="zoom">
+                            <Img className='chield' imagem={`${item.Imagens[0].Link}`} />
+                          </div>
                         )
                       }
                     >
                       <Text>
-                        <h3>{`${item.Tipo.toLowerCase()} - ${item.Bairro.toLowerCase()}`}</h3>
-                        <h4>{`${item.Cidade.toLowerCase()}`}</h4>
-                        <Divider
-                          style={{marginTop: -1}}
-                          dashed={true}  
-                        />
                         {item.Valor > 0 && item.ValorVenda > 0 ? (
-                          <div style={{ display: 'flex' }}>
-                            <div>
-                              <h5>Venda</h5>
-                              <strong>{`${item.ValorVenda.toLocaleString(
-                                'pt-BR',
-                                {
+                          <Info>
+                            <div style={{ display: 'flex', alignItems: 'center'}}>
+                              <h5>
+                                por
+                              </h5>
+                              <h2>
+                                {`${item.ValorVenda.toLocaleString(
+                                  'pt-BR',
+                                  {
+                                    style: 'currency',
+                                    currency: 'BRL'
+                                  }
+                                )}`}
+                              </h2>
+                            </div>
+                            <Tags>
+                              <Tag color="#57e679">Venda</Tag> 
+                              <Tag color="#ff4d4f">Aluguel</Tag>
+                            </Tags>
+                          </Info>
+                        ) : item.Valor > 0 && item.ValorVenda === 0 ? (
+                          <Info>
+                            <div style={{ display: 'flex', alignItems: 'center'}}>
+                              <h2>
+                                {`${item.Valor.toLocaleString('pt-BR', {
                                   style: 'currency',
                                   currency: 'BRL'
-                                }
-                              )}`}</strong>
+                                })}`}
+                              </h2>
+                              <h5>
+                                por mês
+                              </h5>
                             </div>
-                            <div>
-                              <h5>Alugel</h5>
-                              <strong>{`${item.Valor.toLocaleString('pt-BR', {
-                                style: 'currency',
-                                currency: 'BRL'
-                              })}`}</strong>
-                            </div>
-                          </div>
-                        ) : item.Valor > 0 && item.ValorVenda === 0 ? (
-                          <div>
-                            <h5>Alugel</h5>
-                            <strong>{`${item.Valor.toLocaleString('pt-BR', {
-                              style: 'currency',
-                              currency: 'BRL'
-                            })}`}</strong>
-                          </div>
+                            <Tags>
+                              <Tag color="#ff4d4f">Aluguel</Tag>
+                            </Tags>
+                          </Info>
                         ) : item.Valor === 0 && item.ValorVenda > 0 ? (
-                          <>
-                            <h5>Venda</h5>
-                            <strong>{`${item.ValorVenda.toLocaleString('pt-BR', {
-                              style: 'currency',
-                              currency: 'BRL'
-                            })}`}</strong>
-                          </>
+                          <Info> 
+                            <div style={{ display: 'flex', alignItems: 'center'}}>
+                              <h5>
+                                por
+                              </h5>
+                              <h2>
+                                {`${item.ValorVenda.toLocaleString('pt-BR', {
+                                  style: 'currency',
+                                  currency: 'BRL'
+                                })}`}
+                              </h2>
+                            </div>
+                            <Tags>
+                              <Tag color="#57e679">Venda</Tag>
+                            </Tags>
+                          </Info>
                         ) : item.Valor === 0 && item.ValorVenda === 0 ? (
-                          <div>
-                            <h5>Valor não definido</h5>
-                            <strong>Entre em contato</strong>
-                          </div>
+                          <Info>
+                            <h2>Entre em contato</h2>
+                          </Info>
                         ) : null}
+                        <h3>{`${item.Tipo.toLowerCase()}-${item.Bairro.toLowerCase()}`}</h3>
+                        <div style={{display: 'flex', alignItems: 'center', marginTop: -7}}>
+                          <Icon 
+                            style={{
+                              fontSize: 12, 
+                              color:'#9C9C9C', 
+                              margin: '-10px 5px 0px 0px'
+                              }}
+                            type="environment" 
+                            theme="filled"/>
+                          <h4>
+                            {`
+                              ${item.Bairro.toLowerCase()}, 
+                              ${item.Cidade.toLowerCase()}-
+                              ${item.Estado.toLowerCase()}
+                            `}
+                            </h4>  
+                        </div>
                       </Text>
                     </Card>
                   </a>
@@ -124,7 +162,7 @@ export default class Imoveis extends Component {
           )}
           { !this.props.loading ? (
             <Pagination
-              style={{margin: '20px 0px 80px 8.7%' }}
+              style={{margin: '50px 0px 80px 43px' }}
               defaultCurrent={1}
               defaultPageSize={numEachPage}
               onChange={this.handleChange}

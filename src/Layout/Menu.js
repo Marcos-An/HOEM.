@@ -70,14 +70,6 @@ class MenuPrincipal extends Component {
             <Menu.Item key="4" onClick={this.goTo('/Contato')}>
               Contato
             </Menu.Item>
-            <Button
-              onClick={this.goTo('/Login')}
-              size="large"
-              type="primary"
-              style={{ marginLeft: 30, marginRight: 50 }}
-            >
-              Entrar/Registro
-            </Button>
           </Menu>
         </MediaQuery>
       </>

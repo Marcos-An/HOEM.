@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
 export const Body = styled.div`
-  background-color: #000;
+  height: 500px;
+  background: #D3D3D3;
 `;

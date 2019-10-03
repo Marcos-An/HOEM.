@@ -2,7 +2,7 @@ import React from 'react';
 import { Social, Preco, VendaAluguel, PrecosAlign } from './styles';
 import MediaQuery from 'react-responsive';
 
-import RedesSociais from './Social';
+import RedesSociais from '../../Components/Social';
 
 export default function Precos(props) {
   const { itemVenda, itemAluguel } = props;

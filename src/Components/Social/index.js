@@ -1,5 +1,5 @@
 import React from 'react';
-import { Social } from './styles';
+import { Social } from '../../Pages/Imovel/styles';
 import {
   FacebookShareButton,
   FacebookIcon,

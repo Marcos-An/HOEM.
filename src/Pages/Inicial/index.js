@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Card from '../../Components/Cards/ImoveisCard';
-import PrimeiraFaixa from './PrimeiraFaixa';
-import TerceiraFaixa from './TerceiraFaixa';
-import QuartaFaixa from './QuartaFaixa';
+import { PrimeiraFaixa } from './stylesPrimeira';
+import SegundaFaixa from './SegundaFaixa';
+import QuartaFaixa from '././QuartaFaixa'
 import QuintaFaixa from './QuintaFaixa';
+import SextaFaixa from './SextaFaixa'
+import TerceiraFaixa from './TerceiraFaixa'
 import { sortBy } from "lodash";
 import axios from 'axios';
 const API_URL = 'http://imovelsisapi.azurewebsites.net:80/api';
@@ -68,7 +70,9 @@ export default class Inicial extends Component{
   render(){
     return (
       <>
-        <PrimeiraFaixa 
+       <PrimeiraFaixa/> 
+        <SegundaFaixa/>
+        <TerceiraFaixa
           handleFinalidade={this.handleFinalidade}
           handleTipoImovel={this.TipoImovel}
           handleFaixaPrecoAluguel={this.FaixaPrecoAluguel}
@@ -83,9 +87,9 @@ export default class Inicial extends Component{
           imoveis={this.state.imoveis}
           loading={this.state.loading}
         />
-        <TerceiraFaixa />
         <QuartaFaixa />
-        <QuintaFaixa />
+        <QuintaFaixa/>
+        <SextaFaixa />
       </>
     );
   }
