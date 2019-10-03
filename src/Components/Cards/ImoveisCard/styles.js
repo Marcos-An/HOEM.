@@ -8,6 +8,15 @@ export const Title = styled.h1`
   font-family: 'Nunito', sans-serif;
 `;
 
+export const Icons = styled.div`
+    margin-top: 10px;
+    display: flex;
+`;
+export const IconsInfo = styled.div`
+    display: flex;
+    align-content: center;
+`;
+
 export const Info = styled.div`
   display: flex;
   align-items: center;
@@ -115,7 +124,7 @@ export const Text = styled.div`
     text-transform: capitalize;
     color: #a6a6a6;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Nunito', sans-serif;
   }
   h5 {
@@ -123,7 +132,16 @@ export const Text = styled.div`
     margin-right: 5px;
     color: #aeb3ba;
     font-weight: 800;
-    font-size: 13px;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+  }
+  h6 {
+    margin-top: -2px;
+    margin-left: 8px;
+    margin-right: 15px;
+    color: #aeb3ba;
+    font-weight: 600;
+    font-size: 14px;
     font-family: 'Nunito', sans-serif;
   }
 `;

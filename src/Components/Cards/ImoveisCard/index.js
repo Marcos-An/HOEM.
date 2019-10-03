@@ -4,12 +4,16 @@ import {
   Img, 
   Text, 
   Title, 
-  Container, 
-  SubTitle, 
+  Container,  
+  SubTitle,
+  IconsInfo, 
+  Icons,
   Faixa,
   Info,
   Tags
 } from './styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faArrowsAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Spin,Card, Pagination, Tag, Icon } from 'antd';
 
@@ -149,11 +153,21 @@ export default class Imoveis extends Component {
                           <h4>
                             {`
                               ${item.Bairro.toLowerCase()}, 
-                              ${item.Cidade.toLowerCase()}-
+                              ${item.Cidade.toLowerCase()} - 
                               ${item.Estado.toLowerCase()}
                             `}
                             </h4>  
                         </div>
+                        <Icons>
+                        <IconsInfo>
+                          <FontAwesomeIcon icon={faBed} style={{fontSize: 16, color: '#9C9C9C'}}/>
+                          <h6>{`${item.QtdQuartos}`}</h6>
+                        </IconsInfo>  
+                        <IconsInfo>
+                          <FontAwesomeIcon icon={faArrowsAlt} style={{fontSize: 16, color: '#9C9C9C'}}/>
+                          <h6>{`${item.AreaTotal}`}</h6>
+                        </IconsInfo>        
+                      </Icons>
                       </Text>
                     </Card>
                   </a>
