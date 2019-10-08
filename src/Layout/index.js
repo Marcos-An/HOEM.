@@ -65,7 +65,7 @@ export default class App extends Component {
           <Content>
             <div style={{ background: '#fff' }}>{children}</div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          <Footer style={{ textAlign: 'center', background: '#FDFDFD' }}>
             <Rodape/>
           </Footer>
         </Layout>

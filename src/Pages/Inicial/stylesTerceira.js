@@ -78,22 +78,22 @@ export const Text = styled.div`
 export const FormSpace = styled.div`
   display: block;
   align-items: left;
-  margin-top: -400px;
-  margin-right: 100px;
-  margin-bottom: 94px;
+  margin: -330px 100px 94px 0px;
   border-radius: 10px;
   background: rgb(0, 0, 0, 0.9);
   box-shadow: -22px 27px 26px -31px rgba(0,0,0,0.75);
 
   @media (max-width: 700px) {
-    margin-top: 0px !important;
-    margin-right: 0px !important;
+    margin: 0px !important;
+    border-radius: 10px 10px 0px 0px;
   }
+  
+  @media (max-width: 1000px) {
+    margin: -200px 20px 0px;
+  }
+
   @media (min-width: 1900px) {
     margin-right: 200px;
   }
   
-  @media (min-width: 800px) and (max-width: 900px) {
-    margin-right: 90px ;
-  }
 `;

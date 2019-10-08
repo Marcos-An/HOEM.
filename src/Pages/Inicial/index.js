@@ -81,7 +81,7 @@ export default class Inicial extends Component{
           handleSearch={this.handleSearch}
           Finalidade={this.state.Finalidade}
         />
-        <a id="Imoveis"/>
+       {/*<a id="Imoveis"/>*/}
         <Card
           handleSearch={this.handleSearch}
           imoveis={this.state.imoveis}

@@ -5,24 +5,20 @@ export default function Inicial() {
   return (
     <SextaFaixa>
       <Infos>
-        <img src="./Assets/group.svg" alt="" />
         <Value> 1.312 </Value>
-        <Text>CLIENTES SATISFEITOS</Text>
+        <Text>Clientes satisfeitos</Text>
       </Infos>
       <Infos>
-        <img src="./Assets/history.svg" alt="" />
         <Value> 50 </Value>
-        <Text>ANOS DE HISTÓRIA</Text>
+        <Text>Anos de história</Text>
       </Infos>
       <Infos>
-        <img src="./Assets/seller.svg" alt="" />
         <Value> +10 </Value>
-        <Text>CORRTORES</Text>
+        <Text>Corretores de imóveis</Text>
       </Infos>
       <Infos>
-        <img src="./Assets/hotel.svg" alt="" />
         <Value> 11.234 </Value>
-        <Text>VENDAS E ALUGUEIS</Text>
+        <Text>Vendas e alugueis</Text>
       </Infos>
     </SextaFaixa>
   );

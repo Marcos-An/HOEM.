@@ -10,12 +10,14 @@ import {
   Icons,
   Faixa,
   Info,
-  Tags
+  Tags,
+  PaginationSection
 } from './styles';
+import Loading from './loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faArrowsAlt } from '@fortawesome/free-solid-svg-icons'
 
-import { Spin,Card, Pagination, Tag, Icon } from 'antd';
+import { Card, Pagination, Tag, Icon } from 'antd';
 
 const numEachPage = 6;
 export default class Imoveis extends Component {
@@ -45,15 +47,7 @@ export default class Imoveis extends Component {
       </Faixa>
         <Container>
           {this.props.loading ? (
-            <div
-              style={{
-                textAlign: 'center',
-                alignSelf: 'center',
-                marginBottom: '10%'
-              }}
-            >
-              <Spin tip="Carregando..." />
-            </div>
+            <Loading loading={this.props.loading}/>
           ) : (
             <Body>
               {this.props.imoveis.length > 0 &&
@@ -87,13 +81,15 @@ export default class Imoveis extends Component {
                                 por
                               </h5>
                               <h2>
-                                {`${item.ValorVenda.toLocaleString(
-                                  'pt-BR',
-                                  {
-                                    style: 'currency',
-                                    currency: 'BRL'
-                                  }
-                                )}`}
+                                {`
+                                  ${item.ValorVenda.toLocaleString(
+                                    'pt-BR',
+                                    {
+                                      style: 'currency',
+                                      currency: 'BRL'
+                                    }
+                                  )}
+                                `}
                               </h2>
                             </div>
                             <Tags>
@@ -174,14 +170,16 @@ export default class Imoveis extends Component {
                 ))}
             </Body>
           )}
-          { !this.props.loading ? (
-            <Pagination
-              style={{margin: '50px 0px 80px 43px' }}
-              defaultCurrent={1}
-              defaultPageSize={numEachPage}
-              onChange={this.handleChange}
-              total={this.props.imoveis.length}
-            />
+          { 
+            !this.props.loading ? (
+            <PaginationSection>
+              <Pagination
+                defaultCurrent={1}
+                defaultPageSize={numEachPage}
+                onChange={this.handleChange}
+                total={this.props.imoveis.length}
+              />
+            </PaginationSection>
           ) : null
         }
         </Container>

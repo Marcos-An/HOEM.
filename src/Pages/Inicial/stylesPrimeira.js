@@ -10,6 +10,9 @@ export const PrimeiraFaixa = styled.div`
   justify-content: center;
   background-attachment: fixed;
 
+  @media (max-width: 700px) {
+    height: 300px;
+  }
 `;
 
 export const SegundaFaixa = styled.div`
@@ -41,7 +44,7 @@ export const Text = styled.div`
     width: 76%;
     text-align:left;
     justify-content: center;
-    padding: 50px 0px 50px 40px;
+    padding: 30px 0px 30px 40px;
     h1 {
       padding-left: 0px !important;
       font-size: 25px !important;
