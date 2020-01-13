@@ -8,4 +8,4 @@ SAS -
 REACT JS -
 NETLIF e outras.
 
-Fique a vontade e usuo de base para testar coisas novas :)
+Fique a vontade e use-o de base para testar coisas novas :)
