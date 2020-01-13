@@ -6,6 +6,6 @@ Este projeto é apenas para o fins de testes de tecnologias como:
 JSS -
 SAS -
 REACT JS -
-NETLIF e outras
+NETLIF e outras.
 
 Fique a vontade e usuo de base para testar coisas novas :)
